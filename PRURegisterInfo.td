@@ -14,6 +14,10 @@ def sub_16_16 : SubRegIndex<16, 16>;
 def sub_8_16 : ComposedSubRegIndex<sub_16_16, sub_8_0>;
 def sub_8_24 : ComposedSubRegIndex<sub_16_16, sub_8_8>;
 
+// Special purpose registers
+def SP : PRUReg<2, "r2">;
+def FP : PRUReg<4, "r4">;
+
 // General purpose registers
 foreach reg = 0-31 in {
     
