@@ -301,3 +301,24 @@ let SubRegIndices = [sub_8_8], CoveredBySubRegs = 1 in {
   def b2: PRUReg<32, "b2", [r0_b2]>, DwarfRegNum<[]>;
   def b3: PRUReg<32, "b3", [r0_b3]>, DwarfRegNum<[]>;
 }
+
+//===----------------------------------------------------------------------===//
+//  Register Classes
+//===----------------------------------------------------------------------===//
+
+def breg : RegisterClass<"PRU", [i8], 8, (sequence "b%u", 0, 3)>;
+
+def reg8 : RegisterClass<"PRU", [i8], 8, (add
+    (sequence "r%u_b0", 0, 31),
+    (sequence "r%u_b1", 0, 31),
+    (sequence "r%u_b2", 0, 31),
+    (sequence "r%u_b3", 0, 31)
+)>;
+
+def reg16 : RegisterClass<"PRU", [i16], 8, (add
+    (sequence "r%u_w0", 0, 31),
+    (sequence "r%u_w1", 0, 31),
+    (sequence "r%u_w2", 0, 31)
+)>;
+
+def reg32 : RegisterClass<"PRU", [i32], 8, (sequence "r%u", 0, 31)>;

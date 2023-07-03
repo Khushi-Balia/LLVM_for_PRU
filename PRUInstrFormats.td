@@ -1,3 +1,7 @@
+//===----------------------------------------------------------------------===//
+//  PRU Instruction Format Definitions.
+//===----------------------------------------------------------------------===//
+
 // Generic PRU Format
 class InstPRU<dag outs, dag ins, string asmstr, list<dag> pattern>
     : Instruction {
@@ -59,13 +63,12 @@ class ALU_Inst_RI<bits<8> opcode, dag outs, dag ins, string asmstr,
 }
 
 // Flow Control Instructions
-
 class FC_Inst<bits<8> opcode, dag outs, dag ins, string asmstr,
                 list<dag> pattern>
     : InstPRU<outs, ins, asmstr, pattern> {
 
   bits<5> ri;
-  bits<5> ri;
+  bits<5> rj;
   bits<4> condition;
   bits<10> addr;
 
